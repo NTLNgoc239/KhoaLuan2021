@@ -1,0 +1,102 @@
+.findroute {
+    position: fixed;
+    width: 400px;
+    height: 85vh;
+    background-color:#ffff;
+    left: 0;
+    top: 90px;
+    transform: translateX(-100%);
+    z-index: 1000;
+    transition: 0.5s;
+    margin-top: 15px;
+}
+.findroute li {
+    line-height: 40px;
+}
+.findroute li a span:hover {
+    color:cornflowerblue;
+}
+.findroute.active{
+    transform: translateX(0);
+}
+.chart {
+    position: fixed;
+    width: 400px;
+    height: 100vh;
+    background-color:#ffff;
+    left: 0;
+    top: 90px;
+    transform: translateX(-100%);
+    z-index: 1000;
+    transition: 0.5s;
+    margin-top: 15px;
+}
+/* .findroute li {
+    line-height: 40px;
+}
+.findroute li a span:hover {
+    color:cornflowerblue;
+} */
+.chart.active{
+    transform: translateX(0);
+}
+.feedback {
+    position: fixed;
+    width: 400px;
+    height: 100vh;
+    background-color:#ffff;
+    left: 0;
+    top: 90px;
+    transform: translateX(-100%);
+    z-index: 1000;
+    transition: 0.5s;
+    margin-top: 15px;
+}
+/* .findroute li {
+    line-height: 40px;
+}
+.findroute li a span:hover {
+    color:cornflowerblue;
+} */
+.feedback.active{
+    transform: translateX(0);
+}
+.button-feedback {
+    height: 32px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1000;
+    transition: 0.5s;
+    right: 0px;
+    bottom: 50px;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    /* top: 100%; */
+    left: 0;
+    right: 0;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+  }
+.autocomplete-active {
+    background-color: DodgerBlue !important; 
+    color: #ffffff; 
+  }
