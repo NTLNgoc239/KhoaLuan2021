@@ -85,6 +85,205 @@ select * from nghet,ngap,khac"""
         #     "#8463FF"]
     }
 
+@app.get ("/get-type/{year}")
+async def read_item(year):
+    year = year[-2:]
+    query_sql = f"""with Jan as
+(
+select count(id) as thang1 from getdata1022 where  id::text LIKE '{year}01%'),
+
+Feb as
+(
+select count(id) as thang2  from getdata1022 where  id::text LIKE '{year}02%'
+),
+Mar as
+(
+select count(id) as thang3  from getdata1022 where  id::text LIKE '{year}03%'
+),
+Apr as
+(
+select count(id) as thang4  from getdata1022 where  id::text LIKE '{year}04%'
+),
+May as
+(
+select count(id) as thang5  from getdata1022 where  id::text LIKE '{year}05%'
+),
+Jun as
+(
+select count(id) as thang6  from getdata1022 where  id::text LIKE '{year}06%'
+),
+Jul as
+(
+select count(id) as thang7   from getdata1022 where  id::text LIKE '{year}07%'
+),
+Aug as
+(
+select count(id) as thang8   from getdata1022 where  id::text LIKE '{year}08%'
+),
+Sep as
+(
+select count(id) as thang9  from getdata1022 where  id::text LIKE '{year}09%'
+),
+Oct as
+(
+select count(id) as thang10   from getdata1022 where  id::text LIKE '{year}10%'
+),
+Nov as
+(
+select count(id) as thang11   from getdata1022 where  id::text LIKE '{year}11%'
+),
+Dec as
+(
+select count(id) as thang12   from getdata1022 where  id::text LIKE '{year}12%'
+)
+
+select * from Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"""
+    cur.execute(query_sql)
+    results = cur.fetchall()
+    return {
+        'Jan': results[0]['thang1'],
+        'Feb': results[0]['thang2'],
+        'Mar': results[0]['thang3'],
+        'Apr': results[0]['thang4'],
+        'May': results[0]['thang5'],
+        'Jun': results[0]['thang6'],
+        'Jul': results[0]['thang7'],
+        'Aug': results[0]['thang8'],
+        'Sep': results[0]['thang9'],
+        'Oct': results[0]['thang10'],
+        'Nov': results[0]['thang11'],
+        'Dec': results[0]['thang12']
+    }
+
+@app.get ("/get-district/{year}")
+async def read_item(year):
+    year = year[-2:]
+    query_sql =f"""with Q1 as
+(
+select count(id) as Q1 from getdata1022 where address like '%Quận 1%' and id::text LIKE '{year}%'),
+
+Q2 as
+(
+select count(id) as Q2  from getdata1022 where address like '%Quận 2%' and  id::text LIKE '{year}%'
+),
+Q3 as
+(
+select count(id) as Q3  from getdata1022 where address like '%Quận 3%' and  id::text LIKE '{year}%'
+),
+Q4 as
+(
+select count(id) as Q4  from getdata1022 where address like '%Quận 4%' and  id::text LIKE '{year}%'
+),
+Q5 as
+(
+select count(id) as Q5  from getdata1022 where address like '%Quận 5%' and  id::text LIKE '{year}%'
+),
+Q6 as
+(
+select count(id) as Q6  from getdata1022 where address like '%Quận 6%' and  id::text LIKE '{year}%'
+),
+Q7 as
+(
+select count(id) as Q7  from getdata1022 where address like '%Quận 7%' and  id::text LIKE '{year}%'
+),
+Q8 as
+(
+select count(id) as Q8  from getdata1022 where address like '%Quận 8%' and  id::text LIKE '{year}%'
+),
+Q9 as
+(
+select count(id) as Q9  from getdata1022 where address like '%Quận 9%' and  id::text LIKE '{year}%'
+),
+Q10 as
+(
+select count(id) as Q10  from getdata1022 where address like '%Quận 10%' and  id::text LIKE '{year}%'
+),
+Q11 as
+(
+select count(id) as Q11  from getdata1022 where address like '%Quận 11%' and  id::text LIKE '{year}%'
+),
+Q12 as
+(
+select count(id) as Q12  from getdata1022 where address like '%Quận 12%' and  id::text LIKE '{year}%'
+),
+HBC as
+(
+select count(id) as BC  from getdata1022 where address like '%Bình Chánh%' and  id::text LIKE '{year}%'
+),
+HCC as
+(
+select count(id) as HCC  from getdata1022 where address like '%Củ Chi%' and  id::text LIKE '{year}%'
+),
+CG as
+(
+select count(id) as CG from getdata1022 where address like '%Cần Giờ%' and  id::text LIKE '{year}%'
+),
+HM as
+(
+select count(id) as HM  from getdata1022 where address like '%Hóc Môn%' and  id::text LIKE '{year}%'
+),
+TD as
+(
+select count(id) as TD  from getdata1022 where address like '%Thủ Đức%' and  id::text LIKE '{year}%'
+),
+BT as
+(
+select count(id) as BT  from getdata1022 where address like '%Bình Thạnh%' and  id::text LIKE '{year}%'
+),
+TB as
+(
+select count(id) as TB  from getdata1022 where address like '%Tân Bình%' and  id::text LIKE '{year}%'
+),
+TP as
+(
+select count(id) as TP  from getdata1022 where address like '%Tân Phú%' and  id::text LIKE '{year}%'
+),
+BTan as
+(
+select count(id) as BTan  from getdata1022 where address like '%Bình Tân%' and  id::text LIKE '{year}%'
+),
+NB as
+(
+select count(id) as NB  from getdata1022 where address like '%Nhà Bè%' and  id::text LIKE '{year}%'
+),
+GV as
+(
+select count(id) as GV  from getdata1022 where address like '%Gò Vấp%' and  id::text LIKE '{year}%'
+),
+PN as
+(
+select count(id) as PN  from getdata1022 where address like '%Phú Nhuận%' and  id::text LIKE '{year}%'
+)
+select * from Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,HCC,HBC,CG,HM,NB,BT,BTan,TP,TB,PN,TD,GV"""
+    cur.execute(query_sql)
+    results = cur.fetchall()
+    return {
+        'Quan1': results[0]['q1'],
+        'Quan2': results[0]['q2'],
+        'Quan3': results[0]['q3'],
+        'Quan4': results[0]['q4'],
+        'Quan5': results[0]['q5'],
+        'Quan6': results[0]['q6'],
+        'Quan7': results[0]['q7'],
+        'Quan8': results[0]['q8'],
+        'Quan9': results[0]['q9'],
+        'Quan10': results[0]['q10'],
+        'Quan11': results[0]['q11'],
+        'Quan12': results[0]['q12'],
+        'BChanh': results[0]['bc'],
+        'CuChi': results[0]['hcc'],
+        'CanGio': results[0]['cg'],
+        'HMon': results[0]['hm'],
+        'TDuc': results[0]['td'],
+        'BThanh': results[0]['bt'],
+        'TBinh': results[0]['tb'],
+        'TPhu': results[0]['tp'],
+        'BTan': results[0]['btan'],
+        'NBe': results[0]['nb'],
+        'GVap': results[0]['gv'],
+        'PNhuan': results[0]['pn'],
+
+    }
 
 @app.get("/get-street")
 async def read_item():

@@ -21,7 +21,7 @@
   <title>Ứng dụng ngập lụt - 2021</title>
 </head>
 
-<body>
+<body style="line-height:0.98">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
       <img src="./img/logo.png" style="width:80px; height:80px">
@@ -58,27 +58,12 @@
             Biểu đồ
           </a>
           <span></span>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <img src="./img/user.png" style="width:30px; height:30px">
-            Tài khoản
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Lịch sử tìm kiếm</a>
-            <a class="dropdown-item" href="#">Điểm ngập cũ</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+        </li><li class="nav-item-chart">
+          <a class="nav-link" href="#">
             <img src="./img/more.png" style="width:30px; height:30px">
-            Thêm
+            Thông tin dự án
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Thông tin dự án</a>
-          </div>
+          <span></span>
         </li>
       </ul>
     </div>
@@ -92,8 +77,11 @@
     </div>
   </div>
 
-  <div class="findroute">
-    <p style="text-align:center;font-weight:Bold; font-size: 20px">Bản đồ điều hướng</p>
+  
+   
+  <div class="findroute" id="inactive">
+    <p style="font-weight:Bold; font-size: 20px">Bản đồ điều hướng
+    </p>
     <li style="list-style:none">
       <form>
         <div class="form-inline my-2 my-lg-0" style="padding-left: 30px">
@@ -114,47 +102,62 @@
       </form>
     </li>
     <div class="dropdown-divider"></div>
-    <li style="list-style:none">
-      <div class="history">
-        <p style="font-weight:bold">Lịch sử tìm kiếm hôm nay</p>
-    <li style="list-style:none">
-      <a>Võ Văn Kiệt</a>
-      <a>Võ Văn Kiệt</a>
-      <a>Võ Văn Kiệt</a>
-      <a>Võ Văn Kiệt</a>
-      <br>
-      <a>Võ Văn Kiệt</a>
-      <br>
-      <a>Võ Văn Kiệt</a>
-      <br>
-      <a>Võ Văn Kiệt</a>
-      <br>
-    </li>
+  </div>
+  <div class="chart" id="inactive">     
+    <div class="icon">
+      <img src = "./img/cross-sign.png" style="width: 20px; height: 20px; left: 350px; position: fixed; margin-top: 5px;">      
+    </div>
+    <p style="font-weight:Bold; font-size: 20px">Biểu đồ thống kê
+    </p>
 
-  </div>
-  </li>
-  </div>
-  <div class="chart">
-    <p style="text-align:center;font-weight:Bold; font-size: 20px">Biểu đồ thống kê các vấn đề thoát nước đô thị tại
-      Tp.Hồ Chí Minh</p>
     <li class="nav-item dropdown" style="list-style:none">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        Năm
+        Loại
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item year" onClick="drawChart17()">2017</a>
-        <a class="dropdown-item year" onClick="drawChart18()">2018</a>
-        <a class="dropdown-item year" onClick="drawChart19()">2019</a>
-        <a class="dropdown-item year" onClick="drawChart20()">2020</a>
-        <a class="dropdown-item year" onClick="drawChart21()">2021</a>
+        <a class="dropdown-item year" onClick="drawtype17()">2017</a>
+        <a class="dropdown-item year" onClick="drawtype18()">2018</a>
+        <a class="dropdown-item year" onClick="drawtype19()">2019</a>
+        <a class="dropdown-item year" onClick="drawtype20()">2020</a>
+        <a class="dropdown-item year" onClick="drawtype21()">2021</a>
       </div>
     </li>
-    <div id="mychart" style=" width:100%; height:50%; margin-top:5%"></div>
+    <li class="nav-item dropdown " style="list-style:none">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Thời gian
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item type" onClick="drawyear17()">2017</a>
+        <a class="dropdown-item type" onClick="drawyear18()">2018</a>
+        <a class="dropdown-item type" onClick="drawyear19()">2019</a>
+        <a class="dropdown-item type" onClick="drawyear20()">2020</a>
+        <a class="dropdown-item type" onClick="drawyear21()">2021</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown " style="list-style:none">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Khu vực
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item type" onClick="drawdist17()">2017</a>
+        <a class="dropdown-item type" onClick="drawdist18()">2018</a>
+        <a class="dropdown-item type" onClick="drawdist19()">2019</a>
+        <a class="dropdown-item type" onClick="drawdist20()">2020</a>
+        <a class="dropdown-item type" onClick="drawdist21()">2021</a>
+      </div>
+    </li>
+    <div id="mychart" style=" width:100%; height:100%; line-height:0.98"></div>
   </div>
-  <div class="feedback">
-    <p style="font-size: 20px;font-weight:bold; text-align:center">Chia sẻ ý kiến</p>
-    <p>Trải nghiệm tổng thể của bạn tại trang web như thế nào?</p>
+  <div class="feedback" id="inactive">     
+    <div class="icon">
+      <img src = "./img/cross-sign.png" style="width: 20px; height: 20px; left: 350px; position: fixed; margin-top: 5px;">      
+    </div>
+    <p style="font-size: 20px;font-weight:bold">Chia sẻ ý kiến
+    </p>
+    <p>1. Trải nghiệm tổng thể của bạn tại trang web như thế nào?</p>
     <div class="form-check" style="display: flex;">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
       <label class="form-check-label" for="exampleRadios1">
@@ -167,7 +170,7 @@
         <img src="./img/sad.png" style="width:30px; height:30px">
       </label>
     </div>
-    <p>Chia sẻ những điều bạn cảm thấy thích, không thích cũng như những ý kiến về trang web tại đây</p>
+    <p>2. Chia sẻ những điều bạn cảm thấy thích, không thích cũng như những ý kiến về trang web tại đây</p>
     <div class="form-group">
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
         placeholder="Để bảo mật, vui lòng không điền thông tin cá nhân"></textarea>

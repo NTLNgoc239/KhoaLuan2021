@@ -28,10 +28,13 @@ function autocomplete(inp) {
             req.open("GET", 'http://localhost:8000/autocomplete?input=' + e.target.value, false);
             req.send();
             arr = JSON.parse(req.responseText).description;
+            console.log(arr);
             placeidarr = JSON.parse(req.responseText).placeid;
+            console.log(placeidarr);
             placeid = placeidarr[0];
 
-            var a, b, i, val = this.value;
+            var a, b, i, val = this.value;        
+            console.log(val);
             /*close any already open lists of autocompleted values*/
             closeAllLists();
             if (!val) { return false; }
@@ -39,14 +42,16 @@ function autocomplete(inp) {
             /*create a DIV element that will contain the items (values):*/
             a = document.createElement("DIV");
             a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items");
+            a.setAttribute("class", "autocomplete-items");            
+            console.log(a);   
             /*append the DIV element as a child of the autocomplete container:*/
             this.parentNode.appendChild(a);
 
             /*for each item in the array...*/
             for (i = 0; i < arr.length; i++) {
                 /*create a DIV element for each matching element:*/
-                b = document.createElement("DIV");
+                b = document.createElement("DIV");                
+                console.log(b);
                 b.innerHTML = arr[i];
                 /*insert a input field that will hold the current array item's value:*/
                 b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
