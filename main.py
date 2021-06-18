@@ -11,10 +11,16 @@ connection = psycopg2.connect(user="postgres",
                               host="localhost",
                               port="5433",
                               database="postgres")
+# connection = psycopg2.connect(user="postgres",
+#                               password="vlab5.0",
+#                               host="localhost",
+#                               port="5432",
+#                               database="test2")
 
 cur = connection.cursor(cursor_factory=RealDictCursor)
 
 # uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+# uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4 --loop asyncio --reload
 
 app = FastAPI()
 
@@ -136,7 +142,7 @@ ORDER BY d.seq
     # return results[0]['jsonb_build_object']['features']
     return results[0]['jsonb_build_object']
 
-@app.get("/autocomplete")
+@app.get("/place/autocomplete")
 async def read_item(input:str):
     r = requests.get(
         'https://rsapi.goong.io/Place/AutoComplete',
@@ -150,24 +156,26 @@ async def read_item(input:str):
             'Referer': 'https://inspector.goong.io/'
         }
     )
-    placeid = []
-    desc = []
-    for i in r.json()['predictions']:
-        placeid.append(i['place_id'])
-        desc.append(i['description'])
-    return {'placeid':placeid,'description':desc}
+    # placeid = []
+    # desc = []
+    # for i in r.json()['predictions']:
+    #     placeid.append(i['place_id'])
+    #     desc.append(i['description'])
+    # return {'placeid':placeid,'description':desc}
+    return r.json()
 
-@app.get("/place")
-async def read_item(input:str):
+@app.get("/place/detail")
+async def read_item(placeid:str):
     r = requests.get(
         'https://rsapi.goong.io/Place/Detail',
         params={
             'api_key': 'PxNaGKg1NIWUJsFT3DMBkqaDspx5VvdW9CePVHq1',
-            'place_id': input
+            'place_id': placeid
         },
         headers={
             'Origin': 'https://inspector.goong.io',
             'Referer': 'https://inspector.goong.io/'
         }
     )
-    return r.json()['result']['geometry']['location']
+    # return r.json()['result']['geometry']['location']
+    return r.json()

@@ -2,7 +2,7 @@
     position: fixed;
     width: 400px;
     height: 85vh;
-    background-color:#ffff;
+    background-color: #ffff;
     left: 0;
     top: 90px;
     transform: translateX(-100%);
@@ -10,20 +10,24 @@
     transition: 0.5s;
     margin-top: 15px;
 }
+
 .findroute li {
     line-height: 40px;
 }
+
 .findroute li a span:hover {
-    color:cornflowerblue;
+    color: cornflowerblue;
 }
-.findroute.active{
+
+.findroute.active {
     transform: translateX(0);
 }
+
 .chart {
     position: fixed;
     width: 400px;
     height: 100vh;
-    background-color:#ffff;
+    background-color: #ffff;
     left: 0;
     top: 90px;
     transform: translateX(-100%);
@@ -31,20 +35,24 @@
     transition: 0.5s;
     margin-top: 15px;
 }
+
+
 /* .findroute li {
     line-height: 40px;
 }
 .findroute li a span:hover {
     color:cornflowerblue;
 } */
-.chart.active{
+
+.chart.active {
     transform: translateX(0);
 }
+
 .feedback {
     position: fixed;
     width: 400px;
     height: 100vh;
-    background-color:#ffff;
+    background-color: #ffff;
     left: 0;
     top: 90px;
     transform: translateX(-100%);
@@ -52,15 +60,19 @@
     transition: 0.5s;
     margin-top: 15px;
 }
+
+
 /* .findroute li {
     line-height: 40px;
 }
 .findroute li a span:hover {
     color:cornflowerblue;
 } */
-.feedback.active{
+
+.feedback.active {
     transform: translateX(0);
 }
+
 .button-feedback {
     height: 32px;
     background-color: #fff;
@@ -73,30 +85,29 @@
     bottom: 50px;
 }
 
-.autocomplete-items {
+#geocoderA {
+    z-index: 2;
+    margin: 20px;
+}
+
+#geocoderB {
+    z-index: 1;
+    margin: 20px;
+}
+
+.goongjs-ctrl-geocoder {
+    min-width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* #map {
     position: absolute;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
-    /* top: 100%; */
-    left: 0;
-    right: 0;
-  }
-  
-  .autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
-  }
-  
-  /*when hovering an item:*/
-  .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
-  }
-.autocomplete-active {
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
-  }
+    top: 0;
+    bottom: 0;
+    width: 100%;
+} */
