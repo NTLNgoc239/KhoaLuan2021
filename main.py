@@ -1,6 +1,6 @@
 from typing import Optional
 from fastapi import FastAPI, File, UploadFile, Form
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from psycopg2.extras import RealDictCursor
 import psycopg2
@@ -162,7 +162,8 @@ async def read_item(input:str):
     #     placeid.append(i['place_id'])
     #     desc.append(i['description'])
     # return {'placeid':placeid,'description':desc}
-    return r.json()
+    return JSONResponse(content=r.json())
+    # return r.json()
 
 @app.get("/place/detail")
 async def read_item(placeid:str):
@@ -178,4 +179,5 @@ async def read_item(placeid:str):
         }
     )
     # return r.json()['result']['geometry']['location']
-    return r.json()
+    return JSONResponse(content=r.json())
+    # return r.json()
