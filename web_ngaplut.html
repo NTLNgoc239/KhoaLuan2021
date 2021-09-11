@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/@goongmaps/goong-geocoder/dist/goong-geocoder.css" rel="stylesheet"
+        type="text/css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- bootstrap 3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="./web_ngaplut.css" />
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.css" /> -->
+    <link rel="stylesheet" href="./dist/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="./dist/leaflet/MarkerCluster.css" />
+    <link rel="stylesheet" href="./dist/leaflet/MarkerCluster.Default.css" />
+    <title>Ngập lụt đô thị - 2021</title>
+</head>
+
+<body>
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <img src="./img/logo.png" class="img-thumbnail1">
+                <a class="navbar-brand" href="#">NGẬP LỤT ĐÔ THỊ</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item-direc active" data-toggle="collapse" data-target="#findroutewrap"
+                            aria-expanded="false" aria-controls="findroutewrap">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <img src="./img/direction.png" class="img-item">
+                                Điều hướng</a>
+                            <span></span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img src="./img/writing.png" class="img-item">
+                                Đăng phản ánh</a>
+                            <span></span>
+                        </li>
+                        <li class="nav-item-chart">
+                            <a class="nav-link" href="#">
+                                <img src="./img/pie-chart.png" class="img-item">
+                                Biểu đồ</a>
+                            <span></span>
+                        </li>
+                        <li class="nav-item-infomation">
+                            <a class="nav-link" href="#">
+                                <img src="./img/more.png" class="img-item">
+                                Thông tin website</a>
+                            <span></span>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="./img/water-drop.png" class="img-item">
+                                Điểm ngập
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <label for="myCheck">Điểm ngập 1022</label>
+                                <input type="checkbox" id="myCheck1" onClick="getpoint()">
+                                <hr class="dropdown-divider">
+                                <label for="myCheck">Điểm ngập hiện tại</label>
+                                <input type="checkbox" id="myCheck2" onClick="getpoint21()">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="map">
+            <div id="map">
+                <div class="button-feedback">
+                    <button type="button" class="btn btn-primary" href="#">Feedback</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="findroute" id="findroutewrap">
+        <!-- <button type="button" class="close" style="margin-right: 5px;" data-toggle="findroute-collapse"
+                  data-target="#findroutewrap">
+                  <span aria-hidden="true">&times;</span>
+                </button> -->
+        <!-- <button type="button" class="btn-close" aria-label="Close" id="removeRoute" onClick="removeRoutes()"></button> -->
+        <!-- <a href="#" class="panelClose" aria-label="Close" role="button"
+            data-task="{&quot;id&quot;:&quot;DirectionsTask$$3&quot;,&quot;action&quot;:&quot;removeTaskAndReseatChild&quot;}">
+            <div class="icon"></div>
+        </a> -->
+        <button type="button" class="close" style="margin-right: 5px;" data-toggle="collapse"
+            data-target="#findroutewrap">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <!-- <span class="close">&times;</span> -->
+        <p style="text-align:center;font-weight:Bold; font-size: 20px; text-decoration: orange underline 5px">
+            Bản đồ điều
+            hướng</p>
+
+        <li style="list-style:none">
+
+            <form>
+                <div class="form-inline my-2 my-lg-0" style="padding-left: 30px">
+                    <a>
+                        <img src="./img/A.png" style="width:30px; height:30px">
+                        <div id="geocoderA"></div>
+                    </a>
+                </div>
+                <div class="form-inline my-2 my-lg-0" style="padding-left: 30px">
+                    <a>
+                        <img src="./img/B.png" style="width:30px; height:30px">
+                        <div id="geocoderB"></div>
+                    </a>
+                </div>
+                <div class="buttons" style="margin: 10px 200px;">
+
+
+        </li>
+        <li class="nav-item dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                style="width: 130px;height:50px; background-color: #8bd6d9">
+                <img src="./img/traffic-sign.png" style="width:30px; height:30px; ">
+                Let's Go
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <label for="myCheck">Chế độ ngập</label>
+                <input type="checkbox" id="btnDirection1" onClick="timduongngap()">
+                <hr class="dropdown-divider">
+                <label for="myCheck">Chế độ thường</label>
+                <input type="checkbox" id="btnDirection2" onClick="timduongthuong()">
+        </li>
+    </div>
+    </form>
+    <pre id="result"></pre>
+    </li>
+    <div class="chart" id="inactive">
+        <p style="font-weight:Bold; font-size: 20px; text-align:center; text-decoration: orange underline 5px">
+            Biểu đồ thống kê-Cổng 1022
+        </p>
+        <p style="font-size: 18px;text-align:center; line-height:20px">Biểu đồ thống kê các vấn đề thoát nước đô
+            thị tại Tp.HCM theo</p>
+        <form style="display:inline; flex-direction:row" onsubmit="validate(); return false" method="get" name="chart">
+            <label for="types">Đối tượng:</label>
+            <select name="type" id="types">
+                <option value="loai">Loại ảnh hưởng</option>
+                <option value="time">Thời gian ảnh hưởng</option>
+                <option value="area">Khu vực ảnh hưởng</option>
+            </select>
+            <label for="years">Năm:</label>
+            <select name="year" id="years">
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Submit" id="submit" style="align-items: center;">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                style="width: 120px;height:25px; background-color: yellow; font-size:15px; color: rgb(0, 0, 0); text-align:justify; align-items:center; padding:0px 11px">
+                Comments
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <label for="comment1">Xem</label>
+                <input type="checkbox" id="comment1" onclick="validatacmt() ; return false">
+            </div>
+            <hr>
+            <div class="overflow-auto comment"
+                style="line-height:20px; width:400px;height:400px;display:none; text-align:justify" id="cmt">
+                <p style="font-size: 15px; font-weight:Bold;">NHẬN XÉT BIỂU ĐỒ THỐNG KÊ
+                    CÁC VẤN ĐỀ THOÁT NƯỚC TP.HCM THEO LOẠI ẢNH HƯỞNG TỪ NĂM 2018-2020</p>
+                1. Thống kê theo loại ảnh hưởng được chia thành 3 loại vấn đề thoát nước chính:<br>
+                <dl>
+                    <dd>- Nghẹt nước do tắt cống, các vấn đề rác thải, làm nước không thể thoát được dù là chỉ
+                        là
+                        một vụ mưa nhỏ,
+                        nước cũng không kịp rút trên khu vực.</dd>
+                    <dd>- Ngập nước do mưa lớn trên diện rộng kéo dài trong khoảng thời gian dài.</dd>
+                    <dd> - Các sự cố về cơ sở hạ tầng khác bao gồm các yếu tố liên quan đến cống nước như mất
+                        nắp
+                        cống, nắp cống
+                        hỏng, nắp công gây tiếng ồn,... </dd>
+                </dl>
+                2. Nhìn vào biểu đồ các vấn đề thoát nước từ năm 2018 - 2020 có thể thấy:<br>
+                <dl>
+                    <dd>- Các vấn đề về nghẹt nước tăng 13% (23.4% - 36.4%). </dd>
+                    <dd>- Các vấn đề về ngập nước tăng 3.4% (14.6% - 18%).</dd>
+                    <dd>- Các vấn đề có liên quan đến sự cố cơ sở hạ tầng giảm 16.3% (62% - 45.7%).</dd>
+                </dl>
+                Dẫn đến sự khác biệt trên có thể được giải thích bởi nguyên nhân sau:<br>
+                - Đô thị hóa ngày càng tăng dẫn đến việc cải thiện các vấn đề về cơ sở hạ tầng, tuy nhiên kéo
+                theo
+                đó là gia
+                tăng các vấn đề về rác thải, dẫn đến vấn đề tăng tình trạng ngập nước, nghẹt nước đô thị.
+            </div>
+            <div class="overflow-auto comment"
+                style="line-height:20px; width:400px;height:400px; display:none; text-align:justify" id="cmt2">
+                <p style="font-size: 15px; font-weight:Bold;">NHẬN XÉT BIỂU ĐỒ THỐNG KÊ
+                    CÁC VẤN ĐỀ THOÁT NƯỚC TP.HCM THEO THỜI GIAN ẢNH HƯỞNG TỪ NĂM 2018-2020</p>
+                1. Thống kê thời gian ảnh hưởng được chia thành các năm 2017, 2018, 2019, 2020, 2021.<br>
+                Theo thống kê, ở Tp.HCM thời gian bị ảnh hưởng bởi các vấn đề về thoát nước tập trung chủ yếu
+                vào
+                khoảng thời
+                gian từ tháng 8 - tháng 11 hằng năm.
+                <dl>
+                    <dd>- Năm 2018, ba tháng được báo các vấn đề nhiều nhất là tháng 11 (86), tháng 10 (75),
+                        tháng 9
+                        (64).</dd>
+                    <dd>- Năm 2019, ba tháng được báo cáo các vấn đề nhiều nhất là tháng 10 (164), tháng 9
+                        (125),
+                        tháng 11 (105).
+                    </dd>
+                    <dd>- Năm 2020, ba tháng được báo cáo các vấn đề nhiều nhất là tháng 10 (191), tháng 9
+                        (179),
+                        tháng 8 (175).
+                    </dd>
+                </dl>
+                2. Nguyên nhân:<br>
+                - Thời gian các vấn đề thoát nước xảy ra thường xuyên khớp với thời gian mưa của Tp.HCM. <br>
+                - Các vấn đề tăng dần theo các năm có thể do các vấn đề sau:<br>
+                <dl>
+                    <dd>+ Theo khách quan: vấn đề biến đổi khí hậu gia tăng dẫn đến lượng mưa ngày càng lớn nên
+                        các
+                        vấn đề về
+                        thoát nước ngày càng nhiều. </dd>
+                    <dd>+ Theo chủ quan: sự phát triển của công nghệ ngày càng cao, người dân ngày càng được
+                        tiếp
+                        cận với các
+                        phương
+                        tiện truyền thông, nên các vấn đề ngày càng được báo lên nhiều hơn.</dd>
+                </dl>
+            </div>
+            <div class="overflow-auto comment"
+                style="line-height:20px; width:400px;height:400px; display:none; text-align:justify" id="cmt3">
+                <p style="font-size: 15px; font-weight:Bold;">NHẬN XÉT BIỂU ĐỒ THỐNG KÊ
+                    CÁC VẤN ĐỀ THOÁT NƯỚC TP.HCM THEO KHU VỰC ẢNH HƯỞNG TỪ NĂM 2018-2020</p>
+                1. Thống kê khu vực ảnh hưởng được chia thành các năm 2017, 2018, 2019, 2020, 2021.<br>
+                Theo thống kê, ở Tp.HCM khu vực bị ảnh hưởng bởi các vấn đề về thoát nước có xu hướng ngày càng
+                tăng
+                qua các
+                năm. Cụ thể:
+                <dl>
+                    <dd>- Năm 2018, số điểm có vấn đề tương đối thấp ở các khu vực, dao động 6-50 điểm, chỉ có
+                        quận
+                        1 có tình
+                        trạng thoát nước bị ảnh hưởng nghiêm trọng (122 điểm).</dd>
+                    <dd>- Năm 2019, số điểm có vấn đề tăng lên dao động 10-60 điểm, các quận Gò Vấp (75 điểm),
+                        Bình
+                        Thạnh (104
+                        điểm), Quận 1 (173 điểm) có số điểm báo cáo vượt trội.</dd>
+                    <dd>- Năm 2020, số điểm tiếp tục tăng dao động 14-83 điểm, các điểm Bình Tân, Gò Vấp, Bình
+                        Thạnh, Quận 1 tiếp
+                        tục có số điểm báo cáo cao hơn so với các khu vực lân cận.</dd>
+                </dl>
+                2. Nguyên nhân: <br>
+                <dl>
+                    <dd>-Theo khách quan:<br>
+                        + Sự phân bố không đồng đều của hệ thống thoát nước giữa các quận huyện trên địa bàn
+                        Tp.HCM.<br>
+                        + Sự gia tăng của quá trình đô thị hóa, dẫn đếu bề mặt không thấm gia tăng, đặc biệt là
+                        ở
+                        khu vực trung tâm,
+                        đông dân cư, dẫn đến sự gia tăng đột ngột cao giữa các khu vực Quận 1, Bình Thạnh, Gò
+                        Vấp.<br>
+                    </dd>
+                    <dd>-Theo chủ quan:các khu vực báo cáo có số điểm cao hơn cũng có thể do người dân tại khu
+                        vực
+                        này sử dụng
+                        thiết bị điện tử báo cáo nhiều hơn so với các khu vực còn lại.</dd>
+                </dl>
+            </div>
+        </form>
+
+        <div id="mychart" style=" width:100%; height:100%; line-height:0.98"></div>
+    </div>
+
+    <div class="overflow-auto infomation" style="line-height:20px; ; text-align:justify">
+        <p class="font-weight-bolder" style="font-size: 20px;text-align:center; text-decoration: orange underline 5px">
+            Giới
+            thiệu về website</p>
+        1. Dự án <h6>"WEB CẢNH BÁO NGẬP LỤT QUẬN BÌNH THẠNH"</h6>là khóa luận do sinh viên khoa Môi Trường,
+        chuyên
+        ngành Tin
+        học Môi Trường khóa 17 thực hiện. Nhằm mục đích phục vụ người dân quận Bình Thạnh, thành phố Hồ Chí Minh
+        trong việc
+        cảnh báo ngập lụt đồng thời giúp người dân thực hiện di chuyển dễ dàng trong khu vực ngập.<br>
+        <br>
+        <h5>2. Dự án được thực hiện dựa trên các trang web và nghiên cứu sau đây:</h5>
+        <dl>
+            <dt>Trang web tham khảo thông tin</dt><br>
+            <dd> - Cổng 1022 tiếp nhận và giải đáp thông tin</dd>
+            <dd>- Dự án Smart SaiGon</dd>
+        </dl>
+        Cùng một số các nghiên cứu khác để có những khái niệm cụ thể hơn về ngập lụt đô thị.<br>
+        <br>
+        <h5>3. Hướng dẫn sử dụng</h5>
+        <dl>
+            <dt>a/ Tra cứu điểm ngập</dt><br>
+            <dd>- Điểm ngập màu vàng: Điểm ngập năm 2017-2021 theo cổng 1022 tiếp nhận và giải đáp thông tin
+            </dd>
+            <dd>- Điểm ngập màu đỏ: Điểm ngập hiên tại được ghi nhận trong khoảng thời gian trong ngày</dd>
+            <dt>b/ Tra cứu đường đi tránh điểm ngập</dt><br>
+            <dd>- Sử dụng chức năng của bản đồ điều hướng</dd>
+            <dt>c/ Tra cứu biểu đồ ngập lụt theo thông từ Cổng 1022 tiếp nhận và giải đáp thông tin</dt><br>
+            <dd>- Biểu đồ thống kê các nguyên ngân gây ngập lụt thành phố Hồ Chí Minh trong năm 2017-2021</dd>
+            <dd>- Biểu đồ thống kê thời gian xảy ra ngập lụt thành phố Hồ Chí Minh trong năm 2017-2021</dd>
+            <dd>- Biểu đồ thống kê khu vực xảy ra ngập lụt thành phố Hồ Chí Minh trong năm 2017-2021</dd>
+        </dl>
+        <dl>
+            <dt>d/ Đăng phản ánh ngập lụt</dt><br>
+            <dd>
+                - Được liên kết với page: Ngập lụt đô thị - Quận Bình Thạnh
+            </dd>
+            <dd>
+                - Người dân đăng phản ánh trực tiếp để hiển thị điểm ngập lên bản đồ theo hướng dẫn
+            </dd>
+            <dd>B1: Ghi nhận khu vực ngập (người dân vui lòng ghi rõ địa chỉ ngập để bản đồ có thể ghi nhận vị
+                trí
+                chính xác
+                hơn)</dd>
+            <dd>B2: Ghi nhận tình trạng ngập</dd>
+            <dd>B3: Ghi nhận thời gian ngập</dd>
+            <dd>B4: Ghi nhận hình ảnh ngập (nếu có)</dd>
+        </dl>
+    </div>
+    <div class="feedback">
+        <p style="font-size: 20px;font-weight:bold; text-align:center; text-decoration: orange underline 5px">
+            Chia
+            sẻ ý kiến
+        </p>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <p>
+                <label for="request">
+                    1. Trải nghiệm tổng thể của bạn tại trang web như thế nào?
+                </label>
+                <input type="request" id="danhgia" placeholder="tốt, không tốt" name="danhgia" required>
+            </p>
+            <p>
+                <label for="noidung">2. Chia sẻ những điều bạn cảm thấy thích, không thích cũng như những ý kiến
+                    về
+                    trang web
+                    tại đây</label>
+                <textarea type="reuqest" id="noidung"
+                    placeholder="Để bảo mật thông tin, vui lòng không điền thông tin cá nhân" name="noidung" rows="4"
+                    cols="50">
+                  </textarea>
+            </p>
+            <input type="submit" value="Submit" id="submit">
+            <hr class="dropdown-divider">
+            <dl style="text-align:center">
+                <dt>Liên hệ trực tiếp</dt><br>
+                <dd>Email: ntlngoc239@gmail.com</dd>
+                <dd>Facebook: Lệ Ngọc</dd>
+            </dl>
+        </form>
+        <pre id="ketqua"></pre>
+
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- Chart -->
+    <script src="./dist/chart/loader.js"></script>
+
+    <!-- Axios -->
+    <script src="./dist/axios/axios.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="./dist/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="./dist/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- leaflet -->
+    <script src="./dist/leaflet/leaflet.js"></script>
+    <!-- <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet-src.js"></script> -->
+    <script src="./dist/leaflet/leaflet-src.js"></script>
+    <!-- <script src="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script> -->
+    <script src="./dist/leaflet/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster-src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <!-- <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+    <script
+        src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+    <script src="./node_modules/leaflet.locatecontrol/src/L.Control.Locate.js"></script>
+    <script
+        src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+    <script src="./dist/goong/goong-geocoder.min.js"></script>
+
+    <script src="./jsmain.js"></script>
+    <script src="./chart.js"></script>
+    <script src="./bando.js"></script>
+    <script src="./getpoint.js"></script>
+    <!-- <script src="./getstreet.js"></script> -->
+    <script src="./feedback.js"></script>
+    <script src="./location.js"></script>
+
+</body>
+
+</html>

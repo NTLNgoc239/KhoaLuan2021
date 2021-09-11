@@ -1,0 +1,235 @@
+.img-thumbnail1 {
+  width: 80px;
+  height: 80px;
+}
+
+.img-item {
+  width: 30px;
+  height: 30px;
+}
+.navbar-brand {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.nav-item {
+  font-family: sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navbar-nav {
+  flex: d 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#map {
+  width: 100vw;
+  height: 85vh;
+  left: 0em;
+  right: 0;
+  z-index: 400;
+}
+
+.button-feedback {
+  right: 10px;
+}
+
+.container-fluid {
+  width: 100vw;
+}
+.findroute {
+  position: fixed;
+  width: 400px;
+  height: 85vh;
+  background-color: #ffff;
+  left: 0;
+  top: 90px;
+  transform: translateX(-100%);
+  z-index: 1000;
+  transition: 0.5s;
+}
+
+.findroute li {
+  line-height: 40px;
+}
+
+.findroute li a span:hover {
+  color: cornflowerblue;
+}
+
+.findroute.active {
+  transform: translateX(0);
+}
+
+.chart {
+  position: fixed;
+  width: 400px;
+  height: 100vh;
+  background-color: #ffff;
+  left: 0;
+  top: 90px;
+  transform: translateX(-100%);
+  z-index: 1000;
+  transition: 0.5s;
+}
+
+/* .findroute li {
+    line-height: 40px;
+}
+.findroute li a span:hover {
+    color:cornflowerblue;
+} */
+
+.chart.active {
+  transform: translateX(0);
+}
+
+.feedback {
+  position: fixed;
+  width: 400px;
+  height: 100vh;
+  background-color: #ffff;
+  left: 0;
+  top: 90px;
+  transform: translateX(-100%);
+  z-index: 1000;
+  transition: 0.5s;
+}
+
+/* .findroute li {
+    line-height: 40px;
+}
+.findroute li a span:hover {
+    color:cornflowerblue;
+} */
+
+.feedback.active {
+  transform: translateX(0);
+}
+
+.button-feedback {
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%);
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1000;
+  transition: 0.5s;
+  right: 0px;
+  bottom: 50px;
+}
+
+.button-watermarker {
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%);
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1000;
+  transition: 0.5s;
+  right: 0px;
+  bottom: 80px;
+}
+
+#geocoderA {
+  z-index: 2;
+  margin: 20px;
+}
+
+#geocoderB {
+  z-index: 1;
+  margin: 20px;
+}
+
+.goongjs-ctrl-geocoder {
+  min-width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+} */
+
+.infomation {
+  position: fixed;
+  width: 400px;
+  height: 85vh;
+  /* background-color: rgb(212, 212, 212); */
+  left: 0;
+  top: 90px;
+  transform: translateX(-100%);
+  z-index: 1000;
+  transition: 0.5s;
+
+  background-color: lightblue;
+  /* overflow: auto;  */
+}
+
+.infomation.active {
+  transform: translateX(0);
+}
+
+.comments {
+  position: fixed;
+  width: 400px;
+  height: 85vh;
+  /* background-color: rgb(212, 212, 212); */
+  left: 0px;
+  top: 90px;
+  transform: translateX(-100%);
+  z-index: 1000;
+  transition: 0.5s;
+
+  background-color: lightblue;
+  /* overflow: auto;  */
+}
+
+.comments.active {
+  transform: translateX(400);
+}
+
+.display.comment {
+  display: none;
+}
+#nhanxet {
+  background-color: #4caf50; /* Green */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  z-index: 1000;
+  border-radius: 4px;
+}
+.collapsing {
+  transition: 0s;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  transform: translateX(-100%);
+}
+
+.close:hover {
+  background: #bbb;
+}
