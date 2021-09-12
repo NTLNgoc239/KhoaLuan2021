@@ -28,7 +28,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 350 };
+    var options = { width: 380, height: 350 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(
@@ -53,7 +53,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 350 };
+    var options = { width: 380, height: 350 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(
@@ -78,7 +78,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 350 };
+    var options = { width: 380, height: 350 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(
@@ -103,7 +103,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 350 };
+    var options = { width: 380, height: 350 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(
@@ -128,7 +128,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 350 };
+    var options = { width: 380, height: 350 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(
@@ -161,7 +161,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -194,7 +194,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -227,7 +227,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -260,7 +260,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -293,7 +293,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -338,7 +338,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -383,7 +383,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -428,7 +428,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -473,7 +473,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -518,7 +518,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -563,7 +563,7 @@ function validate() {
     ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { width: 400, height: 450 };
+    var options = { width: 380, height: 450 };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.BarChart(
@@ -709,7 +709,7 @@ card.addEventListener("dblclick", function (e) {
 //     ]);
 
 //   // Optional; add a title and set the width and height of the chart
-//   var options = {'width':400, 'height':550};
+//   var options = {'width':380, 'height':550};
 
 //   // Display the chart inside the <div> element with id="piechart"
 //   var chart = new google.visualization.PieChart(document.getElementById('mychart'));
@@ -734,7 +734,7 @@ card.addEventListener("dblclick", function (e) {
 //     ]);
 
 //   // Optional; add a title and set the width and height of the chart
-//   var options = {'width':400, 'height':550};
+//   var options = {'width':380, 'height':550};
 
 //   // Display the chart inside the <div> element with id="piechart"
 //   var chart = new google.visualization.PieChart(document.getElementById('mychart'));
@@ -758,7 +758,7 @@ card.addEventListener("dblclick", function (e) {
 //     ]);
 
 //   // Optional; add a title and set the width and height of the chart
-//   var options = {'width':400, 'height':550};
+//   var options = {'width':380, 'height':550};
 
 //   // Display the chart inside the <div> element with id="piechart"
 //   var chart = new google.visualization.PieChart(document.getElementById('mychart'));
@@ -783,7 +783,7 @@ card.addEventListener("dblclick", function (e) {
 //     ]);
 
 //   // Optional; add a title and set the width and height of the chart
-//   var options = {'width':400, 'height':550};
+//   var options = {'width':380, 'height':550};
 
 //   // Display the chart inside the <div> element with id="piechart"
 //   var chart = new google.visualization.PieChart(document.getElementById('mychart'));
@@ -808,7 +808,7 @@ card.addEventListener("dblclick", function (e) {
 //     ]);
 
 //   // Optional; add a title and set the width and height of the chart
-//   var options = {'width':400, 'height':550};
+//   var options = {'width':380, 'height':550};
 
 //   // Display the chart inside the <div> element with id="piechart"
 //   var chart = new google.visualization.PieChart(document.getElementById('mychart'));
@@ -841,7 +841,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -874,7 +874,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -907,7 +907,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -940,7 +940,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -973,7 +973,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -1019,7 +1019,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -1065,7 +1065,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -1111,7 +1111,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -1157,7 +1157,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));
@@ -1203,7 +1203,7 @@ card.addEventListener("dblclick", function (e) {
 // ]);
 
 // // Optional; add a title and set the width and height of the chart
-// var options = {'width':400, 'height':550};
+// var options = {'width':380, 'height':550};
 
 // // Display the chart inside the <div> element with id="piechart"
 // var chart = new google.visualization.BarChart(document.getElementById('mychart'));

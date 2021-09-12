@@ -49,7 +49,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item-direc active" data-toggle="collapse" data-target="#findroutewrap"
                             aria-expanded="false" aria-controls="findroutewrap">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link active" aria-current="page" href="#findroutewrap">
                                 <img src="./img/direction.png" class="img-item">
                                 Điều hướng</a>
                             <span></span>
@@ -81,9 +81,11 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <label for="myCheck">Điểm ngập 1022</label>
                                 <input type="checkbox" id="myCheck1" onClick="getpoint()">
-                                <hr class="dropdown-divider">
                                 <label for="myCheck">Điểm ngập hiện tại</label>
                                 <input type="checkbox" id="myCheck2" onClick="getpoint21()">
+                                <hr class="dropdown-divider">
+                                <label for="myCheck">Điểm ngập demo</label>
+                                <input type="checkbox" id="myCheck3" onClick="getpointdemo()">
                             </div>
                         </li>
                     </ul>
@@ -110,15 +112,17 @@
             data-task="{&quot;id&quot;:&quot;DirectionsTask$$3&quot;,&quot;action&quot;:&quot;removeTaskAndReseatChild&quot;}">
             <div class="icon"></div>
         </a> -->
-        <button type="button" class="close" style="margin-right: 5px;" data-toggle="collapse"
+        <!-- <button type="button" class="close" style="margin-right: 5px;" data-toggle="collapse"
             data-target="#findroutewrap">
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span>
-        </button>
+        </button> -->
         <!-- <span class="close">&times;</span> -->
         <p style="text-align:center;font-weight:Bold; font-size: 20px; text-decoration: orange underline 5px">
             Bản đồ điều
             hướng</p>
+        <!-- <button style="position:absolute ; top:0px ; right: 0px" class="bnt">X</button> -->
+        <a class="close">X</a>
 
         <li style="list-style:none">
 
@@ -158,9 +162,11 @@
     <pre id="result"></pre>
     </li>
     <div class="chart" id="inactive">
+        <a class="close1">Close</a>
         <p style="font-weight:Bold; font-size: 20px; text-align:center; text-decoration: orange underline 5px">
             Biểu đồ thống kê-Cổng 1022
         </p>
+
         <p style="font-size: 18px;text-align:center; line-height:20px">Biểu đồ thống kê các vấn đề thoát nước đô
             thị tại Tp.HCM theo</p>
         <form style="display:inline; flex-direction:row" onsubmit="validate(); return false" method="get" name="chart">
@@ -193,7 +199,7 @@
             </div>
             <hr>
             <div class="overflow-auto comment"
-                style="line-height:20px; width:400px;height:400px;display:none; text-align:justify" id="cmt">
+                style="line-height:20px; width:360px;height:500px ;display:none; text-align:justify" id="cmt">
                 <p style="font-size: 15px; font-weight:Bold;">NHẬN XÉT BIỂU ĐỒ THỐNG KÊ
                     CÁC VẤN ĐỀ THOÁT NƯỚC TP.HCM THEO LOẠI ẢNH HƯỞNG TỪ NĂM 2018-2020</p>
                 1. Thống kê theo loại ảnh hưởng được chia thành 3 loại vấn đề thoát nước chính:<br>
@@ -221,7 +227,7 @@
                 tăng các vấn đề về rác thải, dẫn đến vấn đề tăng tình trạng ngập nước, nghẹt nước đô thị.
             </div>
             <div class="overflow-auto comment"
-                style="line-height:20px; width:400px;height:400px; display:none; text-align:justify" id="cmt2">
+                style="line-height:20px; width:360px;height:500px; display:none; text-align:justify" id="cmt2">
                 <p style="font-size: 15px; font-weight:Bold;">NHẬN XÉT BIỂU ĐỒ THỐNG KÊ
                     CÁC VẤN ĐỀ THOÁT NƯỚC TP.HCM THEO THỜI GIAN ẢNH HƯỞNG TỪ NĂM 2018-2020</p>
                 1. Thống kê thời gian ảnh hưởng được chia thành các năm 2017, 2018, 2019, 2020, 2021.<br>
@@ -258,7 +264,7 @@
                 </dl>
             </div>
             <div class="overflow-auto comment"
-                style="line-height:20px; width:400px;height:400px; display:none; text-align:justify" id="cmt3">
+                style="line-height:20px; width:360px;height:500px; display:none; text-align:justify" id="cmt3">
                 <p style="font-size: 15px; font-weight:Bold;">NHẬN XÉT BIỂU ĐỒ THỐNG KÊ
                     CÁC VẤN ĐỀ THOÁT NƯỚC TP.HCM THEO KHU VỰC ẢNH HƯỞNG TỪ NĂM 2018-2020</p>
                 1. Thống kê khu vực ảnh hưởng được chia thành các năm 2017, 2018, 2019, 2020, 2021.<br>
@@ -302,6 +308,7 @@
     </div>
 
     <div class="overflow-auto infomation" style="line-height:20px; ; text-align:justify">
+        <a class="close2">Close</a>
         <p class="font-weight-bolder" style="font-size: 20px;text-align:center; text-decoration: orange underline 5px">
             Giới
             thiệu về website</p>
@@ -351,6 +358,7 @@
         </dl>
     </div>
     <div class="feedback">
+        <a class="close3">Close</a>
         <p style="font-size: 20px;font-weight:bold; text-align:center; text-decoration: orange underline 5px">
             Chia
             sẻ ý kiến
@@ -385,7 +393,7 @@
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
