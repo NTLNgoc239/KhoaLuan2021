@@ -1,3 +1,4 @@
+import uvicorn
 from typing import Optional
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.responses import FileResponse
@@ -10,10 +11,10 @@ from datetime import datetime
 
 
 connection = psycopg2.connect(user="postgres",
-                              password="123",
+                              password="R-tek+&3^5)1(",
                               host="localhost",
-                              port="5433",
-                              database="postgres")
+                              port="5432",
+                              database="testdb")
 # connection = psycopg2.connect(user="postgres",
 #                               password="vlab5.0",
 #                               host="localhost",
@@ -543,3 +544,5 @@ ORDER BY d.seq
         connection.rollback()
     # return results[0]['jsonb_build_object']['features']
     # return results[0]['jsonb_build_object']
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=5555, host='127.0.0.1', reload=True)
